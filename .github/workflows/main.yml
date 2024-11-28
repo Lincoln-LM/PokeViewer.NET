@@ -43,4 +43,4 @@ jobs:
       with:
         name: PokeViewer
         path: |
-          ./PokeViewer.WinForms/bin/Debug
+          ./PokeViewer.NET

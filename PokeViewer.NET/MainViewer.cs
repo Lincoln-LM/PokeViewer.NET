@@ -15,7 +15,7 @@ using System.IO.Compression;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using System.Globalization.CultureInfo;
+using System.Globalization;
 using static PokeViewer.NET.CommandsUtil.CommandsUtil;
 using static PokeViewer.NET.RoutineExecutor;
 using static PokeViewer.NET.ViewerUtil;
@@ -76,7 +76,7 @@ namespace PokeViewer.NET
             var sbb = await Executor.SwitchConnection.GetBotbaseVersion(token).ConfigureAwait(false);
             string replacement = Regex.Replace(sbb, @"\t|\n|\r", "");
             string vIn = replacement.Replace('"', ' ').Trim();
-            var vOut = Convert.ToDouble(vIn, InvariantCulture);
+            var vOut = Convert.ToDouble(vIn, CultureInfo.InvariantCulture);
             if (vOut < 2.4)
             {
                 DialogResult dialogResult = MessageBox.Show($"Current version of sysbot-base v{sbb.ToString().TrimEnd('\r', '\n')} does not match minimum required version. Download latest?", "An update is available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
